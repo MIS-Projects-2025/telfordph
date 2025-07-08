@@ -16,12 +16,12 @@ export default function NotFound() {
                     been moved.
                 </p>
 
-                <Link
+                {/* <Link
                     href={route("dashboard")}
                     className="inline-block px-6 py-2 mt-3 text-lg font-semibold text-blue-600"
                 >
                     Go Back
-                </Link>
+                </Link> */}
             </div>
         </div>
     );

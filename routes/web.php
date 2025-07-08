@@ -1,18 +1,11 @@
 <?php
 
-use App\Http\Controllers\DemoController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-$app_name = env('APP_NAME', '');
 
-// Authentication routes
-require __DIR__ . '/auth.php';
-
-// General routes
-require __DIR__ . '/general.php';
-
-Route::get("/demo", [DemoController::class, 'index'])->name('demo');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::fallback(function () {
     return Inertia::render('404');
