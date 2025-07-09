@@ -1,59 +1,163 @@
-import CountUp from "@/Components/specifics/CountUp";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head } from "@inertiajs/react";
+import { motion } from "motion/react";
 
 export default function Home() {
     return (
         <GuestLayout>
             <Head title="About Us" />
-            <section
-                className="min-h-screen hero"
-                style={{
-                    backgroundImage:
-                        // "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-                        "url(https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/485625711_122095664138817585_1654455605698016043_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=qa7_nKBhUNcQ7kNvwFpxYwk&_nc_oc=Adl7Q2I6rGRj2P34M0CP3mljVlPMERjdrse6hB8f6lgtfWndEW_6IcMib8HKSKQoMI4&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=KnJY3NW2NXI2PM4vV5XaoA&oh=00_AfRfPkJQXKH0MAubC6MB9evORhvrehWJQrY9LF0NsYSOog&oe=68729052)",
-                }}
-            >
-                <div className="hero-overlay"></div>
-                <div className="text-center hero-content text-neutral-content">
-                    <div className="max-w-3xl">
-                        <h1 className="mb-5 text-6xl font-bold text-white">
-                            Telford Philippines
-                        </h1>
-                        <p className="mb-5">
-                            Provident cupiditate voluptatem et in. Quaerat
-                            fugiat ut assumenda excepturi exercitationem quasi.
-                            In deleniti eaque aut repudiandae et a id nisi.
-                        </p>
+            <div className="px-[5%] py-16">
+                <section className="">
+                    <div>
+                        <motion.h1
+                            initial={{ opacity: 0, y: -10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                delay: 0.2,
+                                duration: 0.3,
+                                ease: "easeOut",
+                            }}
+                            className="inline-block text-3xl font-bold md:text-4xl"
+                            style={{ willChange: "opacity, transform" }}
+                            data-morph
+                        >
+                            About Telford Philippines
+                        </motion.h1>
 
-                        <div className="space-x-2">
-                            <button className="btn btn-ghost px-3 py-1 rounded-md bg-blue-600 text-white border-[1px] border-blue-500">
-                                Our Services
-                            </button>
-                            <button className="btn btn-ghost px-3 py-1 rounded-md bg-blue-600 text-white border-[1px] border-blue-500">
-                                Request a Quote
-                            </button>
-                        </div>
+                        <motion.p
+                            initial={{ opacity: 0, y: -10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                delay: 0.5,
+                                duration: 0.3,
+                                ease: "easeOut",
+                            }}
+                            className="inline-block mt-3"
+                            style={{ willChange: "opacity, transform" }}
+                        >
+                            Lorem ipsum dolor sit, amet consectetur adipisicing
+                            elit. Quo quisquam necessitatibus obcaecati, odio
+                            asperiores fuga blanditiis id explicabo dolore atque
+                            magnam repellendus sit ducimus tempore nihil
+                            mollitia velit consequatur nobis?
+                        </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                delay: 0.7,
+                                duration: 0.3,
+                                ease: "easeOut",
+                            }}
+                            className="inline-block mt-5"
+                            style={{ willChange: "opacity, transform" }}
+                        >
+                            <div className="grid grid-cols-2 gap-10">
+                                <div>
+                                    <h4
+                                        data-morph
+                                        className="inline-block text-2xl font-bold"
+                                    >
+                                        Mission
+                                    </h4>
+                                    <p className="text-justify">
+                                        Lorem ipsum dolor sit, amet consectetur
+                                        adipisicing elit. Quo quisquam
+                                        necessitatibus obcaecati, odio
+                                        asperiores fuga blanditiis id explicabo
+                                        dolore atque magnam repellendus sit
+                                        ducimus tempore nihil mollitia velit
+                                        consequatur nobis?
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4
+                                        data-morph
+                                        className="inline-block text-2xl font-bold"
+                                    >
+                                        Vision
+                                    </h4>
+                                    <p className="text-justify">
+                                        Lorem ipsum dolor sit, amet consectetur
+                                        adipisicing elit. Quo quisquam
+                                        necessitatibus obcaecati, odio
+                                        asperiores fuga blanditiis id explicabo
+                                        dolore atque magnam repellendus sit
+                                        ducimus tempore nihil mollitia velit
+                                        consequatur nobis?
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                delay: 0.7,
+                                duration: 0.3,
+                                ease: "easeOut",
+                            }}
+                            className="inline-block mt-5"
+                            style={{ willChange: "opacity, transform" }}
+                        >
+                            <div>
+                                <h4
+                                    data-morph
+                                    className="inline-block text-2xl font-bold"
+                                >
+                                    Core Values
+                                </h4>
+                                <p className="text-justify">
+                                    Lorem ipsum dolor sit, amet consectetur
+                                    adipisicing elit. Quo quisquam
+                                    necessitatibus obcaecati, odio asperiores
+                                    fuga blanditiis id explicabo dolore atque
+                                    magnam repellendus sit ducimus tempore nihil
+                                    mollitia velit consequatur nobis?
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section className="py-16 ">
-                <div className="flex flex-col flex-wrap justify-around px-10 md:flex-row">
-                    {[...Array(5)].map((_, index) => (
-                        <div key={index} className="flex flex-col items-center">
-                            <CountUp
-                                from={0}
-                                to={999}
-                                duration={1000}
-                                suffix="+"
-                                className="text-[45pt] font-bold text-[#de1235]"
-                            />
-                            <p>Lorem Ipsum Dolor</p>
+                <section className="">
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            delay: 0.7,
+                            duration: 0.3,
+                            ease: "easeOut",
+                        }}
+                        className="inline-block mt-5"
+                        style={{ willChange: "opacity, transform" }}
+                    >
+                        <div>
+                            <h4
+                                data-morph
+                                className="inline-block text-2xl font-bold"
+                            >
+                                Community Relations
+                            </h4>
+                            <p className="text-justify">
+                                Lorem ipsum dolor sit, amet consectetur
+                                adipisicing elit. Quo quisquam necessitatibus
+                                obcaecati, odio asperiores fuga blanditiis id
+                                explicabo dolore atque magnam repellendus sit
+                                ducimus tempore nihil mollitia velit consequatur
+                                nobis?
+                            </p>
                         </div>
-                    ))}
-                </div>
-            </section>
+                    </motion.div>
+                </section>
+            </div>
         </GuestLayout>
     );
 }

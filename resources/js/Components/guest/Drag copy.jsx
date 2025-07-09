@@ -13,8 +13,6 @@ export default function Drag() {
 
     useEffect(() => {
         const handleMouseEnter = (e) => {
-            if (!(e.target instanceof Element)) return;
-
             const target = e.target.closest("[data-morph]");
             if (!target) return;
 
@@ -28,8 +26,6 @@ export default function Drag() {
         };
 
         const handleMouseLeave = (e) => {
-            if (!(e.target instanceof Element)) return;
-
             if (!e.target.closest("[data-morph]")) return;
 
             setMorph({
@@ -104,7 +100,7 @@ function useFollowPointer() {
 const baseStyle = {
     position: "fixed",
     backgroundColor: "#3b65af",
-    opacity: 0.09,
+    opacity: 0.2,
     pointerEvents: "none",
     zIndex: -1,
 };

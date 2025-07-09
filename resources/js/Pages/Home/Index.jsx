@@ -3,7 +3,7 @@ import GuestLayout from "@/Layouts/GuestLayout";
 import { Head } from "@inertiajs/react";
 import { motion } from "motion/react";
 
-export default function Home() {
+export default function Home({ images }) {
     return (
         <GuestLayout>
             <Head title="Home" />
@@ -81,7 +81,11 @@ export default function Home() {
             <section className="py-16 ">
                 <div className="flex flex-col flex-wrap justify-around px-10 md:flex-row">
                     {[...Array(5)].map((_, index) => (
-                        <div key={index} className="flex flex-col items-center">
+                        <div
+                            data-morph
+                            key={index}
+                            className="flex flex-col items-center"
+                        >
                             <CountUp
                                 from={0}
                                 to={999}
@@ -110,11 +114,14 @@ export default function Home() {
                                 ease: "easeOut",
                             }}
                         >
-                            <h2 className="p-0 mb-4 text-3xl font-bold leading-none text-gray-800">
+                            <h2
+                                data-morph
+                                className="p-0 mb-4 text-3xl font-bold leading-none text-gray-800"
+                            >
                                 Lorem Ipsum Dolor
                             </h2>
                         </motion.button>
-                        <p className="mb-5">
+                        <p data-morph className="mb-5">
                             Lorem, ipsum dolor sit amet consectetur adipisicing
                             elit. Sequi commodi maxime, tempore, numquam
                             mollitia eius inventore hic reprehenderit
@@ -169,9 +176,13 @@ export default function Home() {
                     <div className="w-[30%] bg-gray-400"></div>
                 </div>
             </section>
+
             <section className="py-16">
                 <div className="px-6 mx-auto text-center max-w-7xl">
-                    <h2 className="mb-4 text-3xl font-bold text-gray-800">
+                    <h2
+                        data-morph
+                        className="inline-block mb-4 text-3xl font-bold text-gray-800 "
+                    >
                         Our Clients
                     </h2>
                     <p className="mb-10">
@@ -179,31 +190,16 @@ export default function Home() {
                     </p>
 
                     <div className="grid items-center justify-center grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
-                        {[
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                            `https://img.icons8.com/fluent/512/node-js.png`,
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                            `https://img.icons8.com/fluent/512/node-js.png`,
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                            `https://img.icons8.com/fluent/512/node-js.png`,
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                            `https://img.icons8.com/fluent/512/node-js.png`,
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                            `https://img.icons8.com/fluent/512/node-js.png`,
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                            `https://img.icons8.com/fluent/512/node-js.png`,
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                            `https://img.icons8.com/fluent/512/node-js.png`,
-                            `https://download.logo.wine/logo/Laravel/Laravel-Logo.wine.png`,
-                        ].map((logo, idx) => (
+                        {images.map((logo, idx) => (
                             <div
                                 key={idx}
                                 className="flex items-center justify-center transition opacity-80 hover:opacity-100"
                             >
                                 <img
+                                    data-morph
                                     src={logo}
                                     alt={`Client ${idx + 1}`}
-                                    className="object-contain h-12 transition grayscale hover:grayscale-0"
+                                    className="object-contain h-12 transition grayscale hover:grayscale-0 mix-blend-multiply"
                                 />
                             </div>
                         ))}
