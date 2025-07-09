@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 
 export default function NavBarGuest() {
     const [scrolled, setScrolled] = useState(false);
@@ -20,96 +21,66 @@ export default function NavBarGuest() {
     const menu = [
         {
             title: "About Us",
+            link: route("aboutUs"),
             links: [
-                {
-                    title: "What we do",
-                    href: "/",
-                },
-                {
-                    title: "Mission and Vision",
-                    href: "/",
-                },
-                {
-                    title: "Community Relations",
-                    href: "/",
-                },
+                { title: "What we do", href: "/" },
+                { title: "Mission and Vision", href: "/" },
+                { title: "Community Relations", href: "/" },
             ],
         },
         {
             title: "Services",
+            link: route("aboutUs"),
             links: [
-                {
-                    title: "Tape and Reel",
-                    href: "/",
-                },
-                {
-                    title: "Tape and Reel",
-                    href: "/",
-                },
-                {
-                    title: "Tape and Reel",
-                    href: "/",
-                },
-                {
-                    title: "Tape and Reel",
-                    href: "/",
-                },
+                { title: "Tape and Reel", href: "/" },
+                { title: "Custom Packaging", href: "/" },
+                { title: "Inspection", href: "/" },
+                { title: "Labeling", href: "/" },
             ],
         },
         {
             title: "Careers",
+            link: route("aboutUs"),
             links: [
-                {
-                    title: "Open Roles",
-                    href: "/",
-                },
-                {
-                    title: "Application Form",
-                    href: "/",
-                },
+                { title: "Open Roles", href: "/" },
+                { title: "Application Form", href: "/" },
             ],
         },
         {
             title: "Contact Us",
+            link: route("aboutUs"),
             links: [
-                {
-                    title: "Our locations",
-                    href: "/",
-                },
-                {
-                    title: "General Inquiry",
-                    href: "/",
-                },
-                {
-                    title: "Request a Quote",
-                    href: "/",
-                },
-                {
-                    title: "Customer Support",
-                    href: "/",
-                },
+                { title: "Our locations", href: "/" },
+                { title: "General Inquiry", href: "/" },
+                { title: "Request a Quote", href: "/" },
+                { title: "Customer Support", href: "/" },
             ],
         },
     ];
 
     return (
         <div
-            className={`sticky top-0 z-50 w-full bg-base-100 transition-all duration-300 ${
-                scrolled ? "shadow h-[50px]" : "h-[70px]"
+            className={`sticky top-0 z-50 w-full bg-base-100 transition-all duration-300 h-[60px] ${
+                scrolled ? "shadow" : ""
             }`}
         >
             {/* Navbar */}
             <nav className="flex items-center justify-between h-full px-5 mx-auto md:px-10 max-w-7xl">
                 {/* Logo */}
                 <div className="flex-1">
-                    <a
-                        href={route("home")}
-                        className={`font-bold transition-all duration-300 ${
-                            scrolled ? "text-lg" : "text-2xl"
-                        }`}
+                    <motion.button
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
                     >
-                        TelfordPH
-                    </a>
+                        <a
+                            href={route("home")}
+                            className={`font-bold transition-all duration-300 ${
+                                scrolled ? "text-lg" : "text-2xl"
+                            }`}
+                        >
+                            TelfordPH
+                        </a>
+                    </motion.button>
                 </div>
 
                 {/* Desktop Menu */}
@@ -120,30 +91,25 @@ export default function NavBarGuest() {
                     onMouseEnter={() => setMegaMenuOpen(true)}
                     onMouseLeave={() => setMegaMenuOpen(false)}
                 >
-                    <a
-                        href={route("home")}
-                        className="border-blue-700 hover:border-b-[3px]"
-                    >
-                        About Us
-                    </a>
-                    <a
-                        href={route("home")}
-                        className="border-blue-700 hover:border-b-[3px]"
-                    >
-                        Our Services
-                    </a>
-                    <a
-                        href={route("home")}
-                        className="border-blue-700 hover:border-b-[3px]"
-                    >
-                        Careers
-                    </a>
-                    <a
-                        href={route("home")}
-                        className="border-blue-700 hover:border-b-[3px]"
-                    >
-                        Contact Us
-                    </a>
+                    {menu.map((section, idx) => (
+                        <motion.button
+                            key={idx}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{
+                                delay: 0.1 * idx,
+                                duration: 0.15,
+                                ease: "easeOut",
+                            }}
+                        >
+                            <a
+                                href={section.link}
+                                className="border-blue-700 hover:border-b-[3px]"
+                            >
+                                {section.title}
+                            </a>
+                        </motion.button>
+                    ))}
                 </div>
 
                 {/* Mobile Toggle */}
@@ -189,8 +155,8 @@ export default function NavBarGuest() {
                                 {section.title}
                             </h4>
                             <ul className="space-y-2">
-                                {section.links.map((link, idx) => (
-                                    <li key={idx}>
+                                {section.links.map((link, idx2) => (
+                                    <li key={idx2}>
                                         <a
                                             className="flex justify-between transition hover:bg-gray-100"
                                             href={link.href}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 
 export default function NavBarGuest() {
     const [scrolled, setScrolled] = useState(false);
@@ -20,6 +21,7 @@ export default function NavBarGuest() {
     const menu = [
         {
             title: "About Us",
+            link: route("aboutUs"),
             links: [
                 {
                     title: "What we do",
@@ -37,6 +39,7 @@ export default function NavBarGuest() {
         },
         {
             title: "Services",
+            link: route("aboutUs"),
             links: [
                 {
                     title: "Tape and Reel",
@@ -58,6 +61,7 @@ export default function NavBarGuest() {
         },
         {
             title: "Careers",
+            link: route("aboutUs"),
             links: [
                 {
                     title: "Open Roles",
@@ -71,6 +75,7 @@ export default function NavBarGuest() {
         },
         {
             title: "Contact Us",
+            link: route("aboutUs"),
             links: [
                 {
                     title: "Our locations",
@@ -102,14 +107,19 @@ export default function NavBarGuest() {
             <nav className="flex items-center justify-between h-full px-5 mx-auto md:px-10 max-w-7xl">
                 {/* Logo */}
                 <div className="flex-1">
-                    <a
-                        href={route("home")}
-                        className={`font-bold transition-all duration-300 ${
-                            scrolled ? "text-lg" : "text-2xl"
-                        }`}
+                    <motion.button
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
                     >
-                        TelfordPH
-                    </a>
+                        <a
+                            href={route("home")}
+                            className={`font-bold transition-all duration-300 ${
+                                scrolled ? "text-lg" : "text-2xl"
+                            }`}
+                        >
+                            TelfordPH
+                        </a>
+                    </motion.button>
                 </div>
 
                 {/* Desktop Menu */}
@@ -120,18 +130,25 @@ export default function NavBarGuest() {
                     onMouseEnter={() => setMegaMenuOpen(true)}
                     onMouseLeave={() => setMegaMenuOpen(false)}
                 >
-                    <button className="border-blue-700 hover:border-b-[3px]">
-                        About Us
-                    </button>
-                    <button className="border-blue-700 hover:border-b-[3px]">
-                        Our Services
-                    </button>
-                    <button className="border-blue-700 hover:border-b-[3px]">
-                        Careers
-                    </button>
-                    <button className="border-blue-700 hover:border-b-[3px]">
-                        Contact Us
-                    </button>
+                    {menu.map((section, idx) => (
+                        <motion.button
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{
+                                delay: 0.1 * idx,
+                                duration: 0.15,
+                                ease: "easeOut",
+                            }}
+                        >
+                            <a
+                                key={idx}
+                                href={section.link}
+                                className="border-blue-700 hover:border-b-[3px]"
+                            >
+                                {section.title}
+                            </a>
+                        </motion.button>
+                    ))}
                 </div>
 
                 {/* Mobile Toggle */}

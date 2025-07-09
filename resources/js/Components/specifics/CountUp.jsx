@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CountUp({
     from = 0,
@@ -9,29 +9,51 @@ export default function CountUp({
     className = "",
 }) {
     const [count, setCount] = useState(from);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const ref = useRef(null);
 
     useEffect(() => {
-        const totalFrames = Math.round(duration / 16); // ~60fps
-        const increment = (to - from) / totalFrames;
-        let frame = 0;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setHasAnimated(true);
+                }
+            },
+            { threshold: 0.6 }
+        );
 
-        const counter = setInterval(() => {
-            frame++;
-            setCount((prev) => {
-                const next = prev + increment;
-                return next >= to ? to : next;
-            });
+        if (ref.current) observer.observe(ref.current);
 
-            if (frame >= totalFrames) clearInterval(counter);
-        }, 16);
+        return () => {
+            if (ref.current) observer.unobserve(ref.current);
+        };
+    }, [hasAnimated]);
 
-        return () => clearInterval(counter);
-    }, [from, to, duration]);
+    useEffect(() => {
+        if (!hasAnimated) return;
+
+        let start = null;
+
+        const animate = (timestamp) => {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            const progressRatio = Math.min(progress / duration, 1);
+            const newValue = from + (to - from) * progressRatio;
+
+            setCount(Math.round(newValue));
+
+            if (progress < duration) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }, [hasAnimated, from, to, duration]);
 
     return (
-        <span className={`${className}`}>
+        <span ref={ref} className={className}>
             {prefix}
-            {Math.round(count)}
+            {count}
             {suffix}
         </span>
     );
